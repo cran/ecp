@@ -8,13 +8,13 @@
 	Agglomerative hierarchical algorithm for change point analysis.
 }
 \usage{
-e.agglo(member, data, alpha=1)
+e.agglo(data, member, alpha=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{member}{Segment membership vector for the time series.}
   \item{data}{A matrix containing the time series with observations 
   	in R^d.}
+  \item{member}{Segment membership vector for the time series.}
   \item{alpha}{Index used for determining the distance between and
   	within segments.}
 }
@@ -29,7 +29,7 @@ number of data points.
 Returns a list with the following components.
 \item{merged}{A matrix indicating which segments were merged at each 
 	step of the agglomerative procedure.}
-\item{gof}{Vector showing the progression of the goodness of fit 
+\item{fit}{Vector showing the progression of the goodness-of-fit 
 	statistic.}
 \item{list}{Matrix showing the progression of the set of change points.}
 \item{opt}{The location of the estimated change points.}
@@ -63,7 +63,7 @@ Nicholas A. James
 set.seed(100)
 mem = rep(c(1,2,3,4),c(10,10,10,10))
 x = c(rnorm(10),rnorm(20,2),rnorm(10,-1))
-y = e.agglo(mem,as.matrix(x),1)
+y = e.agglo(as.matrix(x),mem,1)
 y$opt
 #11 31
 }

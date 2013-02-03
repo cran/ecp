@@ -1,0 +1,8 @@
+ecp 1.5.2
+============
+Changes made since pervious version
+
+* Reordered the argument list for the e.agglo() method. The call is now e.agglo(data, member, alpha=1).
+
+* In the list returned by the e.agglo() method, the gof component
+  has been renamed fit.

@@ -1,7 +1,7 @@
 #The only function that the user has to interact with. member is the initial membership
 #array, Data is the observed data set, alpha is the exponent used on the euclidian 
 #distance.
-e.agglo = function(member,data,alpha=1){
+e.agglo = function(data,member,alpha=1){
 	if(alpha<=0 || alpha>2)
 		stop("The alpha argument must be in (0,2].")
 	ret = process.data(member,data,alpha)
@@ -9,11 +9,11 @@ e.agglo = function(member,data,alpha=1){
 	for(K in N:(2*N-2)){
 		#find which clusters optimize the GOF and then update the distnaces
 		best = find.closest(K,ret)#find which clusters to merge
-		ret$gof = c(ret$gof,best[3])#update GOF statistic
+		ret$fit = c(ret$fit,best[3])#update GOF statistic
 		ret = updateDistance(best[1],best[2],K,ret)#update information after merger
 	}
 	#get the set of change points for the "best" clustering
-	ret$opt = which.max(ret$gof)
+	ret$opt = which.max(ret$fit)
 	ret$opt = sort(ret$list[ret$opt,])
 	#remove change point N+1 if a cyclic merger was performed
 	if(ret$opt[1] != 1)
@@ -28,7 +28,7 @@ process.data = function(member,X,alpha){
 	ret = NULL #the list with the necessary information
 	u = unique(member)
 	N = ret$N = length(u)#number of clusters
-	gof = 0
+	fit = 0
 	for(i in 1:N)#relabel clusters
 		member[member==u[i]] = i
 	if(is.unsorted(member))#Check that segments consist only of adjacent observations
@@ -63,8 +63,8 @@ process.data = function(member,X,alpha){
 	diag(ret$D) = 0
 	#set initial GOF value
 	for(i in 1:N)
-		gof = gof + ret$D[i,ret$left[i]] + ret$D[i,ret$right[i]]
-	ret$gof = gof
+		fit = fit + ret$D[i,ret$left[i]] + ret$D[i,ret$right[i]]
+	ret$fit = fit
 	#create matrix for change point progression
 	ret$list = matrix(NA,nrow=N,ncol=N+1)
 	ret$list[1,1]=1
@@ -101,25 +101,25 @@ find.closest = function(K,ret){
 #Function to calculate the new GOF value. The i argument is assumed to be the left 
 #cluster.
 gof.update = function(i,ret){
-	gof = tail(ret$gof,1)
+	fit = tail(ret$fit,1)
 	j = ret$right[i]
 	#get new left and right clusters
 	rr = ret$right[j]
 	ll = ret$left[i]
 	#remove unneeded values in the GOF
-	gof = gof - 2*(ret$D[i,j] + ret$D[i,ll] + ret$D[j,rr])
+	fit = fit - 2*(ret$D[i,j] + ret$D[i,ll] + ret$D[j,rr])
 	#get cluster sizes
 	n1 = ret$sizes[i]
 	n2 = ret$sizes[j]
 	#add distance to new left cluster
 	n3 = ret$sizes[ll]
 	k = ((n1+n3)*ret$D[i,ll] + (n2+n3)*ret$D[j,ll] - n3*ret$D[i,j])/(n1+n2+n3)
-	gof = gof + 2*k
+	fit = fit + 2*k
 	#add distance to new right cluster
 	n3 = ret$sizes[rr]
 	k = ((n1+n3)*ret$D[i,rr] + (n2+n3)*ret$D[j,rr] - n3*ret$D[i,j])/(n1+n2+n3)
-	gof = gof + 2*k
-	return(gof)
+	fit = fit + 2*k
+	return(fit)
 }
 
 #Function to update the distance from the new cluster to the other clusters. 
