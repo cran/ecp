@@ -1,0 +1,7 @@
+
+useDynLib(ecp)
+
+export("e.agglo")
+export("e.divisive")
+export("getBetween")
+export("getWithin")
