@@ -81,10 +81,10 @@ BEGIN_RCPP
 //Thus if k change points are found, our algorithm is O(kn^2).
 using namespace Rcpp;
 //used to sum an individual row/colum of a matrix
-#define SUM(A) std::accumulate(A.begin() , A.end() , 0.0)//uses STL templated funciton so need to use cxxfunciton()
+#define SUM(A) std::accumulate(A.begin() , A.end() , 0.0)
 
 NumericVector best = NumericVector::create(-1.0,R_NegInf);
-int e = as<int>(e_), s = as<int>(s_), min_size = as<int>(min_size_);//convert to C++ primatives
+int e = as<int>(e_), s = as<int>(s_), min_size = as<int>(min_size_);//ending index, starting index, minimum size
 
 NumericMatrix D(D_);//the distance matrix
 e = e-s+1;//now represents the number of data points
@@ -119,19 +119,19 @@ for(;t2<=e;++t2){//update between and within (for the right sample) distances
 
 t1+=1;
 
-for(;;++t1){//iterate over remaining possible locations for tau1,tau2
-	t2=t1+min_size;
+for(;;++t1){//iterate over possible change point locations (t1)
+	t2=t1+min_size;//skip tau2 to its smallest allowed value
 	if(t2>e)//remaining interval is too small to fit another cluster
 		break;
 	double addA = SUM(D(Range(t1-1,t1-1),Range(0,t1-2)));
-	A+=addA;//update within distance for left sample
+	A+=addA;//update within distance for left cluster
 	double addB = SUM(D(Range(t1-1,t1-1),Range(t1,t2-2)));
-	for(;t2<=e;++t2){
+	for(;t2<=e;++t2){//iterate over possible ending locations for right cluster (t2)
 		addB += D(t1-1,t2-1);
-		B[t2]-=addB;
-		AB[t2]+=(addB-addA);
+		B[t2]-=addB;//update within disance for right cluster
+		AB[t2]+=(addB-addA);//update between cluster distance
 		tmp = 2*AB[t2]/((t2-t1)*(t1))-2*B[t2]/((t2-t1-1)*(t2-t1))-2*A/((t1-1)*(t1));
-		tmp *= (t1*(t2-t1)/t2);
+		tmp *= (t1*(t2-t1)/t2);//new test statistic
 		if(tmp > best[1]){
 			best[0] = t1+s;
 			best[1] = tmp;
@@ -147,30 +147,33 @@ END_RCPP
 
 SEXP getBounds(SEXP n_, SEXP lvl_, SEXP eps_){
 BEGIN_RCPP
+	//n_ = number of boundary values to generate
+	//lvl_ = desired significance level
+	//eps_ = epsilon spending vector
 	int n = as<int>(n_), start = 0, Uat = 2, Lat = -1;
 	double alpha = as<double>(lvl_), errU = 0.0, errL = 0.0;
-	std::vector<int> U(n+1,0), L(n+1,0);
-	std::vector<double> prob(n+1,0), eps = as<std::vector<double> >(eps_);
+	std::vector<int> U(n+1,0), L(n+1,0);//vectors to hold upper and lower bounds
+	std::vector<double> prob(n+1,0), eps = as<std::vector<double> >(eps_);//prob = probability of hitting a boundary
 	prob[0] = 1-alpha; prob[1] = alpha;
-	U[0] = 2; L[0] = -1;
+	U[0] = 2; L[0] = -1;//impossible to hit boundary on first attempt
 	std::vector<double>::iterator vi,vi2;
-	for(int i = 0; i<n; ++i){
+	for(int i = 0; i<n; ++i){//sequentially calculate boundary values
 		prob[Uat] = prob[Uat-1]*alpha;
 		for(vi=prob.begin()+Uat-1,vi2=vi-1; vi!=prob.begin();--vi,--vi2)
 			(*vi) = (*vi)*(1-alpha)+(*vi2)*alpha;
 		prob[Lat+1] *= (1-alpha);
-		while(prob[Uat]+errU <= eps[i+1]){
+		while(prob[Uat]+errU <= eps[i+1]){//while still have spending room decrease upper bound value
 			errU += prob[Uat];
 			--Uat;
 		}
-		while(prob[Lat]+errL <= eps[i+1]){
+		while(prob[Lat]+errL <= eps[i+1]){//while still have spending room increase lower bound value
 			errL += prob[Uat];
 			++Lat;
 		}
 		++Uat;
 		L[i+1] = Lat+start;
 		U[i+1] = Uat+start;
-		if(Lat >= 0)
+		if(Lat >= 0)//reset to -1, can reuse calculations and above code
 			for(vi=prob.begin()+Lat+1,vi2=prob.begin();vi!=prob.begin()+Uat && vi!=prob.end();++vi,++vi2)
 				(*vi2) = (*vi);
 			start += Lat+1;

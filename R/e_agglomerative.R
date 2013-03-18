@@ -1,7 +1,7 @@
 #The only function that the user has to interact with. member is the initial membership
 #array, Data is the observed data set, alpha is the exponent used on the euclidian 
 #distance.
-e.agglo = function(X,member,alpha=1,penalty = function(cps,Xts) 0){
+e.agglo = function(X,member=1:nrow(X),alpha=1,penalty = function(cps){0}){
 	if(alpha<=0 || alpha>2)
 		stop("The alpha argument must be in (0,2].")
 	if(!is.function(penalty))
@@ -15,14 +15,24 @@ e.agglo = function(X,member,alpha=1,penalty = function(cps,Xts) 0){
 		ret = updateDistance(best[1],best[2],K,ret)#update information after merger
 	}
 	#penalize the GOF statistic
-	cps = apply(ret$list,1,function(x){x[!is.na(x)]})
-	ret$fit = ret$fit - sapply(cps,penalty,Xts=X)
+	cps = apply(ret$progression,1,function(x){x[!is.na(x)]})
+	ret$fit = ret$fit + sapply(cps,penalty)
 	#get the set of change points for the "best" clustering
 	ret$opt = which.max(ret$fit)
-	ret$opt = sort(ret$list[ret$opt,])
+	ret$opt = sort(ret$progression[ret$opt,])
 	#remove change point N+1 if a cyclic merger was performed
 	if(ret$opt[1] != 1)
 		ret$opt = rev(rev(ret$opt)[-1])
+	#create final membership vector
+	tmp = ret$opt
+	if(tmp[1] == 1)
+		ret$cluster = rep(1:length(diff(tmp)),diff(tmp))
+	else{
+		tmp = c(1,tmp)
+		ret$cluster = rep(1:length(diff(tmp)),diff(tmp))
+		k = nrow(X) - length(ret$cluster)
+		ret$cluster = c(ret$cluster,rep(1,k))
+	}
 	#remove unnecessary output info
 	ret$N = ret$left = ret$open = ret$D = ret$right = ret$lm = ret$sizes = NULL
 	return(ret)
@@ -71,10 +81,10 @@ process.data = function(member,X,alpha){
 		fit = fit + ret$D[i,ret$left[i]] + ret$D[i,ret$right[i]]
 	ret$fit = fit
 	#create matrix for change point progression
-	ret$list = matrix(NA,nrow=N,ncol=N+1)
-	ret$list[1,1]=1
+	ret$progression = matrix(NA,nrow=N,ncol=N+1)
+	ret$progression[1,1]=1
 	for(i in 2:(N+1))
-		ret$list[1,i] = ret$list[1,i-1] + ret$sizes[i-1]
+		ret$progression[1,i] = ret$progression[1,i-1] + ret$sizes[i-1]
 	#vector to specify the starting point of a cluster
 	ret$lm = numeric(2*N-1)
 	ret$lm[1:N] = 1:N
@@ -153,8 +163,8 @@ updateDistance = function(i,j,K,ret){
 	n2 = ret$sizes[j]
 	ret$sizes[K+1] = n1+n2
 	#update set of change points
-	ret$list[K-ret$N+2,] = ret$list[K-ret$N+1,]
-	ret$list[K-ret$N+2,ret$lm[j]] = NA
+	ret$progression[K-ret$N+2,] = ret$progression[K-ret$N+1,]
+	ret$progression[K-ret$N+2,ret$lm[j]] = NA
 	ret$lm[K+1] = ret$lm[i]
 	#update distnaces
 	for(k in 1:K){

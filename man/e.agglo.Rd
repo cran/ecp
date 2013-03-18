@@ -8,7 +8,7 @@
 	An agglomerative hierarchical estimation algorithm for multiple change point analysis.
 }
 \usage{
-e.agglo(X, member, alpha=1, penalty=function(cps,Xts) 0)
+e.agglo(X, member=1:nrow(X), alpha=1, penalty=function(cps){0})
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,7 +17,7 @@ e.agglo(X, member, alpha=1, penalty=function(cps,Xts) 0)
   \item{alpha}{Moment index used for determining the distance between and
   	within clusters.}
   \item{penalty}{Function used to penalize the obtained goodness-of-fit statistics. This function 
-  takes as its input a vector of change point locations, and a time series.}
+  takes as its input a vector of change point locations (cps).}
 }
 \details{
 Homogeneous clusters are created based on the initial clustering provided by the \emph{member} 
@@ -32,7 +32,8 @@ Returns a list with the following components.
 	step of the agglomerative procedure.}
 \item{fit}{Vector showing the progression of the penalized goodness-of-fit 
 	statistic.}
-\item{list}{A T x (T+1) matrix showing the progression of the set of change points.}
+\item{progression}{A T x (T+1) matrix showing the progression of the set of change points.}
+\item{cluster}{The estimated cluster membership vector.}
 \item{opt}{The location of the estimated change points.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
@@ -66,7 +67,6 @@ mem = rep(c(1,2,3,4),times=c(10,10,10,10))
 x = as.matrix(c(rnorm(10,0,1),rnorm(20,2,1),rnorm(10,-1,1)))
 y = e.agglo(X=x,member=mem,alpha=1,penalty=function(cp,Xts) 0)
 y$opt
-#11 31
 
 
 # Multivariate spatio-temporal example

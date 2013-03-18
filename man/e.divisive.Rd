@@ -50,13 +50,15 @@ number of estimated change points, and \emph{T} is the number of observations.
 }
 \value{
 	The returned value is a list with the following components.
-	\item{cluster.number}{The number of clusters within the data created 
+	\item{k.hat}{The number of clusters within the data created 
 		by the change points.}
 	\item{order.found}{The order in which the change points were estimated.}
 	\item{estimates}{Locations of the statistically significant change points.}
 	\item{considered.last}{Location of the last change point, that 
 		was not found to be statistically significant at the given significance level.}
-	\item{Pvalues}{Approximate p-values estimated from each permutation test.}
+	\item{permutations}{The number of permutations performed by each of the sequential permutation test.}
+	\item{cluster}{The estimated cluster membership vector.}
+	\item{p.values}{Approximate p-values estimated from each permutation test.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -90,15 +92,9 @@ set.seed(100)
 x1 = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
 y1 = e.divisive(X=x1,sig.lvl=0.05,R=499,eps=1e-3,half=1000,k=NULL,min.size=30,alpha=1)
 y1$estimates
-# 1 101 201 301
-y1$cluster.number
-# 3
 x2 = rbind(MASS::mvrnorm(100,c(0,0),diag(2)),MASS::mvrnorm(100,c(2,2),diag(2)))
 y2 = e.divisive(X=x2,sig.lvl=0.05,R=499,eps=1e-3,half=1000,k=NULL,min.size=30,alpha=1)
 y2$estimates
-# 1 101 201
-y2$cluster.number
-# 2
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

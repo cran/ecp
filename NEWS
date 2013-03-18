@@ -1,6 +1,24 @@
+ecp 1.5.4
+============
+Changes made since previous version
+
+* Some of the components of the list returned by both methods have been renamed.
+
+* The member argument for e.agglo now has a default value.
+
+* Fixed issue with the e.agglo penalty argument.
+
+* The penalty argument for e.agglo now accepts a function that depends only on the change point locations.
+
+* Both the e.agglo and e.divisive methods now also return the estimated membership vector.
+
+* The e.divisive method now also returns a vector containing the number of permutations performed at each stage of the sequential testing procedure.
+
+* The STPP dataset has been removed from the package.
+
 ecp 1.5.3
 ============
-Change made since previous version
+Changes made since previous version
 
 * The agglomerative procedure now includes an argument for a penalty term.
 
@@ -15,8 +33,6 @@ updated permutation test.
 * Names of returned list components now adhere to standard R naming convention.
 
 * In the list returned by the e.divisive() method, the list component has been renamed estimates.
-
-* Package no longer requires the Rcpp to be loaded.
 
 * Updated documentation.
 
