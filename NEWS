@@ -1,6 +1,28 @@
+ecp 1.5.3
+============
+Change made since previous version
+
+* The agglomerative procedure now includes an argument for a penalty term.
+
+* New permutation test implementation. The new version is based on the method of Gandy (2009), and R 
+now is the maximum number of permutations to perform.
+
+* Added 2 additional arguments to the e.divisive() method. These arguments are necessary to implement the 
+updated permutation test.
+
+* Function argument names now adhere to standard R naming conventions.
+
+* Names of returned list components now adhere to standard R naming convention.
+
+* In the list returned by the e.divisive() method, the list component has been renamed estimates.
+
+* Package no longer requires the Rcpp to be loaded.
+
+* Updated documentation.
+
 ecp 1.5.2
 ============
-Changes made since pervious version
+Changes made since previous version
 
 * Reordered the argument list for the e.agglo() method. The call is now e.agglo(data, member, alpha=1).
 

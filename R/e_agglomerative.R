@@ -1,10 +1,12 @@
 #The only function that the user has to interact with. member is the initial membership
 #array, Data is the observed data set, alpha is the exponent used on the euclidian 
 #distance.
-e.agglo = function(data,member,alpha=1){
+e.agglo = function(X,member,alpha=1,penalty = function(cps,Xts) 0){
 	if(alpha<=0 || alpha>2)
 		stop("The alpha argument must be in (0,2].")
-	ret = process.data(member,data,alpha)
+	if(!is.function(penalty))
+		stop("The penalty argument must be a function.")
+	ret = process.data(member,X,alpha)
 	N = ret$N
 	for(K in N:(2*N-2)){
 		#find which clusters optimize the GOF and then update the distnaces
@@ -12,6 +14,9 @@ e.agglo = function(data,member,alpha=1){
 		ret$fit = c(ret$fit,best[3])#update GOF statistic
 		ret = updateDistance(best[1],best[2],K,ret)#update information after merger
 	}
+	#penalize the GOF statistic
+	cps = apply(ret$list,1,function(x){x[!is.na(x)]})
+	ret$fit = ret$fit - sapply(cps,penalty,Xts=X)
 	#get the set of change points for the "best" clustering
 	ret$opt = which.max(ret$fit)
 	ret$opt = sort(ret$list[ret$opt,])

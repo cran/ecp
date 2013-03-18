@@ -2,13 +2,13 @@ citHeader("To cite ecp in publications use:")
 
 citEntry(entry = "techreport",
   title        = "{ecp}: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data",
-  author       = personList(as.person("David S. Matteson"),
-                   as.person("Nicholas A. James")),
+  author       = personList(as.person("Nicholas A. James"),
+                   as.person("David S. Matteson")),
   institution  = "Cornell University",
   year         = "2013",
 
   textVersion  =
-  paste("David S. Matteson, Nicholas A. James (2013).",
+  paste("Nicholas A. James, David S. Matteson (2013).",
         "ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data",
         "Technical report Cornell University.")
 )

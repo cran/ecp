@@ -7,3 +7,6 @@
  splitPointC <- function (s_, e_, D_, min_size_) 
 .Call("splitPointC", s_, e_, D_, min_size_, PACKAGE = "ecp")
 
+getBounds <- function(n_, lvl_, eps_)
+.Call("getBounds", n_, lvl_, eps_, PACKAGE = "ecp")
+

@@ -9,7 +9,7 @@
 	clusters.
 }
 \usage{
-	e.split(changes, D, min_size, for_sim=FALSE)
+	e.split(changes, D, min.size, for.sim=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,10 +19,10 @@
 	\item{D}{
 		An n by n distance matrix.
 	}
-	\item{min_size}{
+	\item{min.size}{
 		Minimum number of observations between change points.
 	}
-	\item{for_sim}{
+	\item{for.sim}{
 		Boolean value indicating if the function is to be run on permuted 
 		data for significance testing.
 	}
@@ -48,13 +48,13 @@ the user.
 }
 \references{
 %% ~put references to the literature/web site here ~
-James NA, Matteson DS (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
+Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
-James NA, Matteson DS (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+James N.A., Matteson D.S. (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
 
-Rizzo ML, Szekely GL (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
+Rizzo M.L., Szekely G.L. (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
 
-Rizzo ML, Szekely GL (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
+Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
 }
 \author{
 Nicholas A. James

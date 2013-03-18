@@ -8,14 +8,14 @@
 	Performs a permutation test.
 }
 \usage{
-sig.test(D, R, changes, min_size, obs)
+sig.test(D, R, changes, min.size, obs)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{D}{A n by n distnace matrix.}
   \item{R}{The number of permutations to use in the permutation test.}
   \item{changes}{The set of current change points.}
-  \item{min_size}{Minimum number of observations between change points.}
+  \item{min.size}{Minimum number of observations between change points.}
   \item{obs}{Test statistic value for non-permuted data.}
 }
 \details{
@@ -24,7 +24,8 @@ Called by the e.divisive method, and should not be called by the user.
 }
 \value{
 The returned value is the approximate p-value obtained by the permutation 
-test.
+test. The permutaiton test is performed using the method outlined in 
+Gandy (2009).
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -33,13 +34,15 @@ test.
 }
 \references{
 %% ~put references to the literature/web site here ~
-James NA, Matteson DS (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
+Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
-James NA, Matteson DS (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+James N.A., Matteson D.S. (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
 
-Rizzo ML, Szekely GL (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
+Gandy, A. (2009) "Sequential implementation of Monte Carlo tests with uniformly bounded resampling risk." Journal of the American Statistical Association.
 
-Rizzo ML, Szekely GL (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
+Rizzo M.L., Szekely G.L. (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
+
+Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
 }
 \author{
 Nicholas A. James

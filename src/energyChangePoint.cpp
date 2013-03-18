@@ -23,6 +23,7 @@ extern "C" {
 SEXP getWithin( SEXP alpha_, SEXP X_) ;
 SEXP getBetween( SEXP alpha_, SEXP X_, SEXP Y_) ;
 SEXP splitPointC( SEXP s_, SEXP e_, SEXP D_, SEXP min_size_) ;
+SEXP getBounds(SEXP n_, SEXP lvl_, SEXP eps_) ;
 }
 
 // definition
@@ -144,3 +145,38 @@ END_RCPP
 
 
 
+SEXP getBounds(SEXP n_, SEXP lvl_, SEXP eps_){
+BEGIN_RCPP
+	int n = as<int>(n_), start = 0, Uat = 2, Lat = -1;
+	double alpha = as<double>(lvl_), errU = 0.0, errL = 0.0;
+	std::vector<int> U(n+1,0), L(n+1,0);
+	std::vector<double> prob(n+1,0), eps = as<std::vector<double> >(eps_);
+	prob[0] = 1-alpha; prob[1] = alpha;
+	U[0] = 2; L[0] = -1;
+	std::vector<double>::iterator vi,vi2;
+	for(int i = 0; i<n; ++i){
+		prob[Uat] = prob[Uat-1]*alpha;
+		for(vi=prob.begin()+Uat-1,vi2=vi-1; vi!=prob.begin();--vi,--vi2)
+			(*vi) = (*vi)*(1-alpha)+(*vi2)*alpha;
+		prob[Lat+1] *= (1-alpha);
+		while(prob[Uat]+errU <= eps[i+1]){
+			errU += prob[Uat];
+			--Uat;
+		}
+		while(prob[Lat]+errL <= eps[i+1]){
+			errL += prob[Uat];
+			++Lat;
+		}
+		++Uat;
+		L[i+1] = Lat+start;
+		U[i+1] = Uat+start;
+		if(Lat >= 0)
+			for(vi=prob.begin()+Lat+1,vi2=prob.begin();vi!=prob.begin()+Uat && vi!=prob.end();++vi,++vi2)
+				(*vi2) = (*vi);
+			start += Lat+1;
+			Uat -= Lat+1;
+			Lat = -1;
+	}
+	return List::create(_["u"]=U, _["l"]=L);
+END_RCPP
+}

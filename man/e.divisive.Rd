@@ -5,50 +5,58 @@
 	ENERGY DIVISIVE
 }
 \description{
-	Divisive hierarchical algorithm for change point analysis.
+	A divisive hierarchical estimation algorithm for multiple change point analysis.
 }
 \usage{
-e.divisive(X, sig_lvl=.05, R=199, k=NULL, min_size=30, alpha=1)
+e.divisive(X, sig.lvl=.05, R=199, eps=1e-3, half=1000, k=NULL, min.size=30, alpha=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-  	A T by d matrix contating the time series with observations in R^d
-	}
-	\item{sig_lvl}{
-		The level at which to test if a proposed change point is 
+  	A T x d matrix containing the length T time series with d-dimensional observations.
+  	}
+	\item{sig.lvl}{
+		The level at which to sequentially test if a proposed change point is 
 		statistically significant.
 	}
+	\item{eps}{
+		The uniform error bound used in the implementation of the permutaiton test as outlined in 
+		Gandy (2009).
+	}
+	\item{half}{
+		A constant used to control the epsilon spending rate. Futher details can be found in Gandy (2009).
+	}
 	\item{R}{
-		Number of permutations to use in the permutation test.
+		The maximum number of random permutations to use in each iteration of the permutaiton test. The 
+		permutation test p-value is calculated usign the method outlined in Gandy (2009).
 	}
 	\item{k}{
-		Number of change point locations to estimate. If this is NULL then only 
-		the statistically significant estimated change points are returned.
+		Number of change point locations to estimate, surpressing the permutation based testing. 
+		If k=NULL then only the statistically significant estimated change points are returned.
 	}
-	\item{min_size}{
+	\item{min.size}{
 		Minimum number of observations between change points.
 	}
 	\item{alpha}{
-		The index used for determining the distance between and within 
+		The moment index used for determining the distance between and within 
 		segments.
 	}
 }
 \details{
 Segments are found through the use of a binary bisection method and a permutation 
-test. The time complexity of this method is \emph{O(k*T^2)}, where \emph{k} is the 
-number of change points found, and \emph{T} is the number of data points.
+test. The computational complexity of this method is \emph{O(kT^2)}, where \emph{k} is the 
+number of estimated change points, and \emph{T} is the number of observations.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 	The returned value is a list with the following components.
-	\item{cluster_number}{The number of segments within the data created 
+	\item{cluster.number}{The number of clusters within the data created 
 		by the change points.}
-	\item{order_found}{The order in which the change points were found.}
-	\item{list}{Locatoins of the statistically significant change points.}
-	\item{considered_last}{Location of the last tested change point that 
-		was not found to be statistically significant.}
-	\item{pvals}{Approximate p-values found by each permutation test.}
+	\item{order.found}{The order in which the change points were estimated.}
+	\item{estimates}{Locations of the statistically significant change points.}
+	\item{considered.last}{Location of the last change point, that 
+		was not found to be statistically significant at the given significance level.}
+	\item{Pvalues}{Approximate p-values estimated from each permutation test.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -57,13 +65,15 @@ number of change points found, and \emph{T} is the number of data points.
 }
 \references{
 %% ~put references to the literature/web site here ~
-James NA, Matteson DS (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
+MAtteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
-James NA, Matteson DS (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+James N.A., Matteson D.S. (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
 
-Rizzo ML, Szekely GL (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
+Gandy, A. (2009) "Sequential implementation of Monte Carlo tests with uniformly bounded resampling risk." Journal of the American Statistical Association.
 
-Rizzo ML, Szekely GL (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
+Rizzo M.L., Szekely G.L (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification.
+
+Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics.
 }
 \author{
 Nicholas A. James
@@ -77,12 +87,18 @@ Nicholas A. James
 }
 \examples{
 set.seed(100)
-x = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
-y = e.divisive(x)
-y$list
+x1 = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
+y1 = e.divisive(X=x1,sig.lvl=0.05,R=499,eps=1e-3,half=1000,k=NULL,min.size=30,alpha=1)
+y1$estimates
 # 1 101 201 301
-y$cluster_number
+y1$cluster.number
 # 3
+x2 = rbind(MASS::mvrnorm(100,c(0,0),diag(2)),MASS::mvrnorm(100,c(2,2),diag(2)))
+y2 = e.divisive(X=x2,sig.lvl=0.05,R=499,eps=1e-3,half=1000,k=NULL,min.size=30,alpha=1)
+y2$estimates
+# 1 101 201
+y2$cluster.number
+# 2
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
