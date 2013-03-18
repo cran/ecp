@@ -14,7 +14,9 @@ The weekly log returns for the Dow Jones Industrial Average index from April 199
   
   dates: A character vector of dates associated with each observation in the returns series.
   
-  returns: Weekly log returns from April 1990 to January 2012.
+  index: Weekly log returns from April 1990 to January 2012 of the DOW 30 index.
+
+  market: Weekly log returns from April 1990 to January 2012, for the companies in the DOW 30 apart from Kraft.
 }
 \source{
 http://research.stlouisfed.org/fred2/series/DJIA/downloaddata

@@ -69,6 +69,7 @@ y = e.agglo(X=x,member=mem,alpha=1,penalty=function(cp,Xts) 0)
 y$opt
 
 
+\dontrun{
 # Multivariate spatio-temporal example
 # You will need the following packages:
 #	mvtnorm, combinat, and MASS
@@ -90,6 +91,7 @@ for(i in 1:4){
 }
 member = as.numeric(cut(stppData[,2], breaks = seq(0,7,by=1/12)))
 output = e.agglo(X=stppData[,3:4],member=member,alpha=1,penalty=function(cp,Xts) 0)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,3 +1,11 @@
+ecp 1.5.5
+============
+Change made since previous version
+
+* The DJIA dataset now incudes the univariate  market index, as well as the multivariate time series created by the DOW30 companies. Kraft is not included in the multivariate series.
+
+* The list elements in the DJIA dataset are now named; "date", "index", and "market". The "index" component used to be named "returns". The "market" component contains the multivariate time series.
+
 ecp 1.5.4
 ============
 Changes made since previous version
