@@ -8,7 +8,7 @@
 	A divisive hierarchical estimation algorithm for multiple change point analysis.
 }
 \usage{
-e.divisive(X, sig.lvl=.05, R=199, eps=1e-3, half=1000, k=NULL, min.size=30, alpha=1)
+e.divisive(X, sig.lvl=.05, R=199, k=NULL, min.size=30, alpha=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,13 +18,6 @@ e.divisive(X, sig.lvl=.05, R=199, eps=1e-3, half=1000, k=NULL, min.size=30, alph
 	\item{sig.lvl}{
 		The level at which to sequentially test if a proposed change point is 
 		statistically significant.
-	}
-	\item{eps}{
-		The uniform error bound used in the implementation of the permutaiton test as outlined in 
-		Gandy (2009).
-	}
-	\item{half}{
-		A constant used to control the epsilon spending rate. Futher details can be found in Gandy (2009).
 	}
 	\item{R}{
 		The maximum number of random permutations to use in each iteration of the permutaiton test. The 
@@ -90,9 +83,9 @@ Nicholas A. James
 \examples{
 set.seed(100)
 x1 = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
-y1 = e.divisive(X=x1,sig.lvl=0.05,R=199,eps=1e-3,half=1000,k=NULL,min.size=30,alpha=1)
+y1 = e.divisive(X=x1,sig.lvl=0.05,R=199,k=NULL,min.size=30,alpha=1)
 x2 = rbind(MASS::mvrnorm(100,c(0,0),diag(2)),MASS::mvrnorm(100,c(2,2),diag(2)))
-y2 = e.divisive(X=x2,sig.lvl=0.05,R=499,eps=1e-3,half=1000,k=NULL,min.size=30,alpha=1)
+y2 = e.divisive(X=x2,sig.lvl=0.05,R=499,k=NULL,min.size=30,alpha=1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

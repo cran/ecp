@@ -32,6 +32,6 @@ Bleakley K., Vert J.-P. (2011), The group fused Lasso for multiple change-point 
 James N.A., Matteson D.S. (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
 }
 \examples{
-data(ecp/data/ACGH.RData)
+data(ACGH, package="ecp")
 }
 \keyword{datasets}

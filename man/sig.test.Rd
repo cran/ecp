@@ -8,7 +8,7 @@
 	Performs a permutation test.
 }
 \usage{
-sig.test(D, R, changes, min.size, obs)
+sig.test(D, R, changes, min.size, obs, env=emptyenv())
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,6 +17,7 @@ sig.test(D, R, changes, min.size, obs)
   \item{changes}{The set of current change points.}
   \item{min.size}{Minimum number of observations between change points.}
   \item{obs}{Test statistic value for non-permuted data.}
+  \item{env}{Environment with information used to reduce computational time.}
 }
 \details{
 Called by the e.divisive method, and should not be called by the user.

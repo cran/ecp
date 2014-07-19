@@ -9,7 +9,7 @@
 	clusters.
 }
 \usage{
-	e.split(changes, D, min.size, for.sim=FALSE)
+	e.split(changes, D, min.size, for.sim=FALSE, env=emptyenv())
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,6 +25,10 @@
 	\item{for.sim}{
 		Boolean value indicating if the function is to be run on permuted 
 		data for significance testing.
+	}
+	\item{env}{
+		Environment that contains information to help reduce computational
+		time.
 	}
 }
 \details{

@@ -1,4 +1,4 @@
-
+import(Rcpp)
 useDynLib(ecp)
 
 export("e.agglo")

@@ -1,3 +1,17 @@
+ecp 1.6.0
+============
+Changes made since previous version
+
+* Removed the potential for the permutaiton test to terminate early.
+This was causing memory issues, and will be brought back once these
+issues have been resolved.
+
+ecp 1.5.6
+============
+Changes made since previous version
+
+* Fixed issue with examples taking too long to run when installing package.
+
 ecp 1.5.5
 ============
 Change made since previous version

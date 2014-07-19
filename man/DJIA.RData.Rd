@@ -25,6 +25,6 @@ http://research.stlouisfed.org/fred2/series/DJIA/downloaddata
 James NA, Matteson DS (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
 }
 \examples{
-data(ecp/data/DJIA.RData)
+data(DJIA, package="ecp")
 }
 \keyword{datasets}
