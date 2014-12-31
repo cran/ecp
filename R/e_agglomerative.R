@@ -18,13 +18,13 @@ e.agglo = function(X,member=1:nrow(X),alpha=1,penalty = function(cps){0}){
 	cps = apply(ret$progression,1,function(x){x[!is.na(x)]})
 	ret$fit = ret$fit + sapply(cps,penalty)
 	#get the set of change points for the "best" clustering
-	ret$opt = which.max(ret$fit)
-	ret$opt = sort(ret$progression[ret$opt,])
+	ret$estimates = which.max(ret$fit)
+	ret$estimates = sort(ret$progression[ret$estimates,])
 	#remove change point N+1 if a cyclic merger was performed
-	if(ret$opt[1] != 1)
-		ret$opt = rev(rev(ret$opt)[-1])
+	if(ret$estimates[1] != 1)
+		ret$estimates = rev(rev(ret$estimates)[-1])
 	#create final membership vector
-	tmp = ret$opt
+	tmp = ret$estimates
 	if(tmp[1] == 1)
 		ret$cluster = rep(1:length(diff(tmp)),diff(tmp))
 	else{

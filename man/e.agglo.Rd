@@ -34,7 +34,7 @@ Returns a list with the following components.
 	statistic.}
 \item{progression}{A T x (T+1) matrix showing the progression of the set of change points.}
 \item{cluster}{The estimated cluster membership vector.}
-\item{opt}{The location of the estimated change points.}
+\item{estimates}{The location of the estimated change points.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -45,7 +45,9 @@ Returns a list with the following components.
 %% ~put references to the literature/web site here ~
 Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
-James N.A., Matteson D.S. (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+Nicholas A. James, David S. Matteson (2014). "ecp: An R Package for Nonparametric 
+Multiple Change Point Analysis of Multivariate Data.", "Journal of Statistical Software, 
+62(7), 1-25", URL "http://www.jstatsoft.org/v62/i07/"
 
 Rizzo M.L., Szekely G.L. (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
 
@@ -66,7 +68,7 @@ set.seed(100)
 mem = rep(c(1,2,3,4),times=c(10,10,10,10))
 x = as.matrix(c(rnorm(10,0,1),rnorm(20,2,1),rnorm(10,-1,1)))
 y = e.agglo(X=x,member=mem,alpha=1,penalty=function(cp,Xts) 0)
-y$opt
+y$estimates
 
 
 \dontrun{

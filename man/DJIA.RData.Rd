@@ -22,7 +22,9 @@ The weekly log returns for the Dow Jones Industrial Average index from April 199
 http://research.stlouisfed.org/fred2/series/DJIA/downloaddata
 }
 \references{
-James NA, Matteson DS (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+Nicholas A. James, David S. Matteson (2014). "ecp: An R Package for Nonparametric 
+Multiple Change Point Analysis of Multivariate Data.", "Journal of Statistical Software, 
+62(7), 1-25", URL "http://www.jstatsoft.org/v62/i07/"
 }
 \examples{
 data(DJIA, package="ecp")

@@ -36,7 +36,9 @@ the segments created by this proposed change point.
 %% ~put references to the literature/web site here ~
 Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
-James N.A., Matteson D.S. (2013). ecp: R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+Nicholas A. James, David S. Matteson (2014). "ecp: An R Package for Nonparametric 
+Multiple Change Point Analysis of Multivariate Data.", "Journal of Statistical Software, 
+62(7), 1-25", URL "http://www.jstatsoft.org/v62/i07/"
 
 Rizzo M.L., Szekely G.L. (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
 

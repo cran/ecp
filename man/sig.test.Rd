@@ -37,7 +37,9 @@ Gandy (2009).
 %% ~put references to the literature/web site here ~
 Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
-James N.A., Matteson D.S. (2013). ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data.
+Nicholas A. James, David S. Matteson (2014). "ecp: An R Package for Nonparametric 
+Multiple Change Point Analysis of Multivariate Data.", "Journal of Statistical Software, 
+62(7), 1-25", URL "http://www.jstatsoft.org/v62/i07/"
 
 Gandy, A. (2009) "Sequential implementation of Monte Carlo tests with uniformly bounded resampling risk." Journal of the American Statistical Association.
 
