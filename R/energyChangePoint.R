@@ -10,3 +10,6 @@
 getBounds <- function(n_, lvl_, eps_)
 .Call("getBounds", n_, lvl_, eps_, PACKAGE = "ecp")
 
+
+eFastC <- function(Z_, K_, delta_, alpha_, eps_, verbose_ )
+.Call("eFastC", Z_, K_, delta_, alpha_, eps_, verbose_, PACKAGE = "ecp")

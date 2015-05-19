@@ -20,11 +20,11 @@ e.divisive(X, sig.lvl=.05, R=199, k=NULL, min.size=30, alpha=1)
 		statistically significant.
 	}
 	\item{R}{
-		The maximum number of random permutations to use in each iteration of the permutaiton test. The 
-		permutation test p-value is calculated usign the method outlined in Gandy (2009).
+		The maximum number of random permutations to use in each iteration of the permutation test. The 
+		permutation test p-value is calculated using the method outlined in Gandy (2009).
 	}
 	\item{k}{
-		Number of change point locations to estimate, surpressing the permutation based testing. 
+		Number of change point locations to estimate, suppressing the permutation based testing. 
 		If k=NULL then only the statistically significant estimated change points are returned.
 	}
 	\item{min.size}{
@@ -60,7 +60,7 @@ number of estimated change points, and \emph{T} is the number of observations.
 }
 \references{
 %% ~put references to the literature/web site here ~
-MAtteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
+Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change Point Analysis of Multivariate Data.
 
 Nicholas A. James, David S. Matteson (2014). "ecp: An R Package for Nonparametric 
 Multiple Change Point Analysis of Multivariate Data.", "Journal of Statistical Software, 

@@ -24,7 +24,7 @@ getBetween(alpha_, X_, Y_)
 }
 }
 \details{
-The matricies X_ and Y_ do not need to have the same number of rows, but 
+The matrices X_ and Y_ do not need to have the same number of rows, but 
 they do require the same number of columns.
 }
 \value{

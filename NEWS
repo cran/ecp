@@ -1,3 +1,10 @@
+ecp 2.0.0
+============
+Changes made since previous version
+
+* Added a new function e.cp3o. This is a new way to perform change point analysis.
+  It uses dynamic programming and pruning in order to obtain change point estimates.
+
 ecp 1.6.2
 ============
 Changes made since previous version
@@ -15,7 +22,7 @@ ecp 1.6.0
 ============
 Changes made since previous version
 
-* Removed the potential for the permutaiton test to terminate early.
+* Removed the potential for the permutation test to terminate early.
 This was causing memory issues, and will be brought back once these
 issues have been resolved.
 
@@ -29,7 +36,7 @@ ecp 1.5.5
 ============
 Change made since previous version
 
-* The DJIA dataset now incudes the univariate  market index, as well as the multivariate time series created by the DOW30 companies. Kraft is not included in the multivariate series.
+* The DJIA dataset now includes the univariate  market index, as well as the multivariate time series created by the DOW30 companies. Kraft is not included in the multivariate series.
 
 * The list elements in the DJIA dataset are now named; "date", "index", and "market". The "index" component used to be named "returns". The "market" component contains the multivariate time series.
 
