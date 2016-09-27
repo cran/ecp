@@ -1,4 +1,6 @@
 import(Rcpp)
+importFrom("stats", "dist")
+importFrom("utils", "tail")
 useDynLib(ecp)
 
 export("e.agglo")
@@ -6,3 +8,4 @@ export("e.divisive")
 export("getBetween")
 export("getWithin")
 export("e.cp3o")
+export("ks.cp3o")

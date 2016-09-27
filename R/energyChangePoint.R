@@ -13,3 +13,6 @@ getBounds <- function(n_, lvl_, eps_)
 
 eFastC <- function(Z_, K_, delta_, alpha_, eps_, verbose_ )
 .Call("eFastC", Z_, K_, delta_, alpha_, eps_, verbose_, PACKAGE = "ecp")
+
+ksFastC <- function(Z_, K_, minsize_, eps_, verbose_ )
+.Call("ksFastC", Z_, K_, minsize_, eps_, verbose_, PACKAGE = "ecp")

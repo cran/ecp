@@ -50,3 +50,34 @@ e.cp3o = function(Z, K=1, delta=29, alpha=1, eps=0.01, verbose=FALSE){
 
 	return(res)
 }
+
+#Function arguments are as follows (in addition to above):
+#	minsize - minimum distance between changepoints
+  
+ks.cp3o = function(Z, K=1, minsize=30, eps=0.01, verbose=FALSE){
+  #Argument checking
+  if(!is.matrix(Z))
+    stop("Z must be an n x d matrix.")
+  if(K < 1)
+    stop("K is not in an acceptable range.")
+  if(minsize < 1)
+    stop("minsize must be a positive integer greater than 0.")
+  if(eps <= 0 || eps >=1)
+    stop("eps must be in the interval (0,1).")
+  
+  #Force K and delta to be integers
+  K = as.integer(K)
+  
+  #Call C++ code that implements the method and store result in res
+  #Also keep track of time
+  t1 = proc.time()
+  res = ksFastC(Z, K, minsize, eps, verbose)
+  t2 = proc.time()
+  res$time = as.numeric((t2-t1)[3])
+  #Correct for the fact that C++ is zero based
+  #res$estimates = res$estimates + 1
+  #res$cpLoc = res$cpLoc + 1
+  
+  return(res)
+}  
+  

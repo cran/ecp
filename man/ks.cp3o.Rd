@@ -1,15 +1,15 @@
-\name{e.cp3o}
-\alias{e.cp3o}
+\name{ks.cp3o}
+\alias{ks.cp3o}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	CHANGE POINTS ESTIMATION BY PROBABILISTICALLY PRUNED OBJECTIVE (VIA E-STATISTIC)
+	CHANGE POINTS ESTIMATION BY PROBABILISTICALLY PRUNED OBJECTIVE (VIA KOLMOGOROV-SMIRNOV STATISTIC)
 }
 \description{
 	An algorithm for multiple change point analysis that uses dynamic programming and 
-	probabilistic pruning. The E-statistic is used as the goodness-of-fit measure.
+	probabilistic pruning. The Kolmogorov-Smirnov statistic is used as the goodness-of-fit measure.
 }
 \usage{
-e.cp3o(Z, K=1, delta=29, alpha=1, eps=0.01, verbose=FALSE)
+ks.cp3o(Z, K=1, minsize=30, eps=0.01, verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,14 +19,8 @@ e.cp3o(Z, K=1, delta=29, alpha=1, eps=0.01, verbose=FALSE)
 	\item{K}{
 		The maximum number of change points.
 	}
-	\item{delta}{
-		The window size used to calculate the calculate the complete portion off our 
-		approximate test statistic. This also corresponds to one less than the minimum 
-		segment size.
-	}
-	\item{alpha}{
-		The moment index used for determining the distance between and within 
-		segments.
+	\item{minsize}{
+		The minimum segment size.
 	}
 	\item{eps}{
 		The epsilon probability used for the probabilistic pruning procedure.
@@ -37,9 +31,7 @@ e.cp3o(Z, K=1, delta=29, alpha=1, eps=0.01, verbose=FALSE)
 }
 \details{
 Segmentations are found through the use of dynamic programming and probabilistic 
-pruning. The computational complexity of this method is \emph{O(KT^2)}, where 
-\emph{K} is the maximum number of change points, and \emph{T} is the number of 
-observations.
+pruning.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -64,13 +56,10 @@ observations.
 \references{
 %% ~put references to the literature/web site here ~
 
-
-Rizzo M.L., Szekely G.L (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification.
-
-Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics.
+Kifer D., Ben-David S., Gehrke J. (2004). Detecting change in data streams. International Conference on Very Large Data Bases.
 }
 \author{
-Nicholas A. James
+Wenyu Zhang
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -80,16 +69,12 @@ Nicholas A. James
 %%}
 \examples{
 set.seed(400)
-x1 = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
-y1 = e.cp3o(Z=x1, K=7, delta=29, alpha=1, eps=0.01, verbose=FALSE)
+x = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
+y = ks.cp3o(Z=x, K=7, minsize=30, eps=0.01, verbose=FALSE)
 #View estimated change point locations
-y1$estimates
-x2 = rbind(MASS::mvrnorm(100,c(0,0),diag(2)),MASS::mvrnorm(100,c(2,2),diag(2)))
-y2 = e.cp3o(Z=x2, K=4, delta=29, alpha=1, eps=0.01, verbose=FALSE)
-#View estimated change point locations
-y2$estimates
+y$estimates
 #View all possible segmentations for differing numbers of change points
-y2$cpLoc
+y$cpLoc
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
