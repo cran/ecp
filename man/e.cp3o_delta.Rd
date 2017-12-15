@@ -1,15 +1,15 @@
-\name{ks.cp3o}
-\alias{ks.cp3o}
+\name{e.cp3o_delta}
+\alias{e.cp3o_delta}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	CHANGE POINTS ESTIMATION BY PRUNED OBJECTIVE (VIA KOLMOGOROV-SMIRNOV STATISTIC)
+	CHANGE POINTS ESTIMATION BY PRUNED OBJECTIVE (VIA E-STATISTIC)
 }
 \description{
 	An algorithm for multiple change point analysis that uses dynamic programming and 
-	pruning. The Kolmogorov-Smirnov statistic is used as the goodness-of-fit measure.
+	pruning. The E-statistic is used as the goodness-of-fit measure.
 }
 \usage{
-ks.cp3o(Z, K=1, minsize=30, verbose=FALSE)
+e.cp3o_delta(Z, K=1, delta=29, alpha=1, verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,8 +19,14 @@ ks.cp3o(Z, K=1, minsize=30, verbose=FALSE)
 	\item{K}{
 		The maximum number of change points.
 	}
-	\item{minsize}{
-		The minimum segment size.
+	\item{delta}{
+		The window size used to calculate the calculate the complete portion of our 
+		approximate test statistic. This also corresponds to one less than the minimum 
+		segment size.
+	}
+	\item{alpha}{
+		The moment index used for determining the distance between and within 
+		segments.
 	}
 	\item{verbose}{
 		A flag indicating if status updates should be printed.
@@ -28,7 +34,11 @@ ks.cp3o(Z, K=1, minsize=30, verbose=FALSE)
 }
 \details{
 Segmentations are found through the use of dynamic programming and 
-pruning. For long time series, consider using ks.cp3o_delta.
+pruning. Between-segment distances are calculated only using points within
+a window of the segmentation point.
+The computational complexity of this method is \emph{O(KT^2)}, where 
+\emph{K} is the maximum number of change points, and \emph{T} is the number of 
+observations.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -51,10 +61,13 @@ pruning. For long time series, consider using ks.cp3o_delta.
 \references{
 %% ~put references to the literature/web site here ~
 
-Kifer D., Ben-David S., Gehrke J. (2004). Detecting change in data streams. International Conference on Very Large Data Bases.
+
+Rizzo M.L., Szekely G.L (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification.
+
+Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics.
 }
 \author{
-Wenyu Zhang
+Nicholas A. James
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -64,10 +77,10 @@ Wenyu Zhang
 %%}
 \examples{
 set.seed(400)
-x = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
-y = ks.cp3o(Z=x, K=7, minsize=30, verbose=FALSE)
+x1 = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
+y1 = e.cp3o_delta(Z=x1, K=7, delta=29, alpha=1, verbose=FALSE)
 #View estimated change point locations
-y$estimates
+y1$estimates
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

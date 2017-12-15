@@ -1,11 +1,15 @@
+ecp 3.1.0
+============
+Changes made since previous version
+
+* Fixed bugs and updated pruning step.
+
 ecp 3.0.0
 ============
 Changes made since previous version
 
 * Added a new function ks.cp3o. This is a new way to perform change point analysis.
   It uses dynamic programming and pruning in order to obtain change point estimates. It uses the Kolmogorov-Smirnov statistic as goodness-of-fit measure.
-
-* Removed dependence on C++11.
 
 ecp 2.0.0
 ============

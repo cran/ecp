@@ -79,20 +79,26 @@ library(mvtnorm); library(combinat); library(MASS)
 set.seed(2013)
 lambda = 1500 #overall arrival rate per unit time
 muA = c(-7,-7) ; muB = c(0,0) ; muC = c(5.5,0)
-covA = 25*diag(2) ; covB = matrix(c(9,0,0,1),2) ; covC = matrix(c(9,.9,.9,9),2)
+covA = 25*diag(2)
+covB = matrix(c(9,0,0,1),2)
+covC = matrix(c(9,.9,.9,9),2)
 time.interval = matrix(c(0,1,3,4.5,1,3,4.5,7),4,2)
 #mixing coefficents
-mixing.coef = rbind(c(1/3,1/3,1/3),c(.2,.5,.3), c(.35,.3,.35), c(.2,.3,.5))
+mixing.coef = rbind(c(1/3,1/3,1/3),c(.2,.5,.3), c(.35,.3,.35), 
+	c(.2,.3,.5))
 stppData = NULL
 for(i in 1:4){
 	count = rpois(1, lambda* diff(time.interval[i,]))
 	Z = rmultz2(n = count, p = mixing.coef[i,])
-	S = rbind(rmvnorm(Z[1],muA,covA), rmvnorm(Z[2],muB,covB),rmvnorm(Z[3],muC,covC))
-	X = cbind(rep(i,count), runif(n = count, time.interval[i,1], time.interval[i,2]), S)
+	S = rbind(rmvnorm(Z[1],muA,covA), rmvnorm(Z[2],muB,covB),
+		rmvnorm(Z[3],muC,covC))
+	X = cbind(rep(i,count), runif(n = count, time.interval[i,1],
+		time.interval[i,2]), S)
 	stppData = rbind(stppData, X[order(X[,2]),])
 }
 member = as.numeric(cut(stppData[,2], breaks = seq(0,7,by=1/12)))
-output = e.agglo(X=stppData[,3:4],member=member,alpha=1,penalty=function(cp,Xts) 0)
+output = e.agglo(X=stppData[,3:4],member=member,alpha=1,
+	penalty=function(cp,Xts) 0)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

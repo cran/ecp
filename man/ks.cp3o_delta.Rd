@@ -1,5 +1,5 @@
-\name{ks.cp3o}
-\alias{ks.cp3o}
+\name{ks.cp3o_delta}
+\alias{ks.cp3o_delta}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 	CHANGE POINTS ESTIMATION BY PRUNED OBJECTIVE (VIA KOLMOGOROV-SMIRNOV STATISTIC)
@@ -9,7 +9,7 @@
 	pruning. The Kolmogorov-Smirnov statistic is used as the goodness-of-fit measure.
 }
 \usage{
-ks.cp3o(Z, K=1, minsize=30, verbose=FALSE)
+ks.cp3o_delta(Z, K=1, minsize=30, verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,7 +20,8 @@ ks.cp3o(Z, K=1, minsize=30, verbose=FALSE)
 		The maximum number of change points.
 	}
 	\item{minsize}{
-		The minimum segment size.
+		The minimum segment size. This is also the window size used to calculate between-segment
+		distances.
 	}
 	\item{verbose}{
 		A flag indicating if status updates should be printed.
@@ -28,7 +29,8 @@ ks.cp3o(Z, K=1, minsize=30, verbose=FALSE)
 }
 \details{
 Segmentations are found through the use of dynamic programming and 
-pruning. For long time series, consider using ks.cp3o_delta.
+pruning. Between-segment distances are calculated only using points within
+a window of the segmentation point.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -65,7 +67,7 @@ Wenyu Zhang
 \examples{
 set.seed(400)
 x = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))
-y = ks.cp3o(Z=x, K=7, minsize=30, verbose=FALSE)
+y = ks.cp3o_delta(Z=x, K=7, minsize=30, verbose=FALSE)
 #View estimated change point locations
 y$estimates
 }
