@@ -1,11 +1,12 @@
-95cd31ec59fe165c45a0eaf1657f172b *DESCRIPTION
-ffdfc4d1c021f29fa9ad654abc15073b *NAMESPACE
-e5637d0bce7593cd9fdd9ed98b361653 *NEWS
+26e1a34c550db2f5eb4941b8db6af457 *DESCRIPTION
+09c42211ae610be3298cba981422335f *NAMESPACE
+1620f2de73565a0cfb860677ded3a1a4 *NEWS
 2d51652cb1e539e3ce415d6f58359320 *R/cp3o.R
 cff5f50b71bb776a981b359854206fa7 *R/e_agglomerative.R
 29b992ab27cd48c6a29a276fb700e37f *R/e_divisive.R
-6775ec10a6983c031e3be1247bbd8650 *R/energyChangePoint.R
-d417e15c2ee3334340cf0972f1b90f78 *build/vignette.rds
+93a88b93af747bc1f6cebc34d50ec7d1 *R/energyChangePoint.R
+e0ab6d2eb4efe5bc90033696544882a2 *R/kernelCPA.R
+3cf4c10065741c37ee45e4f05a2449ef *build/vignette.rds
 cf3029b40aafa3a4ee49213091636c32 *data/ACGH.RData
 b784fececf53fc2904f271aa125a592c *data/DJIA.RData
 cd230b57f9e0dbcf60421a3fd07503f0 *inst/CITATION
@@ -23,6 +24,7 @@ c9f17db761ab5a605dc2cf6cc5ccca01 *man/find.closest.Rd
 1a94a7bc1c087af8be755dd047fa02f9 *man/getBetween.Rd
 5529c330445347cb9045f0637a5c13e3 *man/getWithin.Rd
 c6743687640b871ff0f0a7c67b624c53 *man/gof.update.Rd
+8acd048605466f99922384034c580d8c *man/kernelCPA.rd
 279ba8ad87cae7765f4800c97a962613 *man/ks.cp3o.Rd
 7917249ea962c0fc430df1f7c73b5c22 *man/ks.cp3o_delta.Rd
 6406a9041d14b5e265b2f13cede40b31 *man/perm.cluster.Rd
@@ -35,5 +37,6 @@ a9ef3ba8eda07802ba959db351df82c7 *man/splitPointC.Rd
 7e9e2ae997663daa43dc3079d9d0ae91 *src/Makevars.win
 b4196cae0f19c085ca79d237475a0aba *src/efast.cpp
 e6ad09748e13856ca9c890ee99842089 *src/energyChangePoint.cpp
+eb1009c414debd2974362addfb3ff5ac *src/kernelcpa.cpp
 7c22b1b500cab25872924e218f1645f5 *src/registerDynamicSymbol.c
 aa8f91448a2024f0f86e17b630700a48 *vignettes/ecp.pdf.asis

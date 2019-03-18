@@ -22,3 +22,13 @@ ksFastC <- function(Z_, K_, minsize_, verbose_ )
 
 ksFastC_delta <- function(Z_, K_, minsize_, verbose_ )
 .Call("ksFastC_delta", Z_, K_, minsize_, verbose_, PACKAGE = "ecp")
+
+
+srcGetV <- function(K_)
+.Call("srcGetV", K_, PACKAGE = "ecp")
+
+srcGetBandwidth <- function(X_, rows_)
+.Call("srcGetBandwidth", X_, rows_, PACKAGE = "ecp")
+
+srcKcpa <- function(II_, V_, H_)
+.Call("srcKcpa", II_, V_, H_, PACKAGE = "ecp")

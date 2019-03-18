@@ -1,7 +1,7 @@
 import(Rcpp)
 useDynLib(ecp, .registration=True)
 
-importFrom("stats", "dist")
+importFrom("stats", "dist", "cov", "median")
 importFrom("utils", "tail")
 
 export("e.agglo")
@@ -12,4 +12,5 @@ export("e.cp3o")
 export("e.cp3o_delta")
 export("ks.cp3o")
 export("ks.cp3o_delta")
+export("kcpa")
 

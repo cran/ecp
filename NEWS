@@ -1,3 +1,9 @@
+ecp 3.1.1
+============
+Changes made since previous version
+
+* Added function kcpa for kernel change point analysis.
+
 ecp 3.1.0
 ============
 Changes made since previous version
