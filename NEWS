@@ -1,3 +1,10 @@
+ecp 3.1.2
+============
+Changes made since previous version
+
+* Updated compatibility with C++11.
+* Fixed bug where type int caused incorrect truncation of double values.
+
 ecp 3.1.1
 ============
 Changes made since previous version

@@ -425,7 +425,7 @@ BEGIN_RCPP
 	//of change points.
 	std::vector<std::vector<int> > cpLocs = find_locations(A);
 	for (int i=0; i<K; ++i){
-		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), bind2nd(std::plus<int>(), 2));
+		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), std::bind(std::plus<int>(), placeholders::_1, 2));
 	}
 	std::vector<int> cps = cpLocs[k+1];
 
@@ -801,7 +801,7 @@ BEGIN_RCPP
 	//of change points.
 	std::vector<std::vector<int> > cpLocs = find_locations(A);
 	for (int i=0; i<K; ++i){
-		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), bind2nd(std::plus<int>(), 2));
+		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), std::bind(std::plus<int>(), placeholders::_1, 2));
 	}
 	std::vector<int> cps = cpLocs[k+1];
 	
@@ -1240,7 +1240,7 @@ BEGIN_RCPP
 	//of change points.
 	std::vector<std::vector<int> > cpLocs = find_locations(A);
 	for (int i=0; i<K; ++i){
-		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), bind2nd(std::plus<int>(), 2));
+		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), std::bind(std::plus<int>(), placeholders::_1, 2));
 	}
 	std::vector<int> cps = cpLocs[k+1];
 	
@@ -1373,7 +1373,6 @@ BEGIN_RCPP
 			  if(s<2*minsize-1){
 			    stat_prune.push_back(stat);
 			  }else{
-			    int b = A(0,s);
 			    stat_prune.push_back(statvec[s]);
 			  }
 			}
@@ -1491,7 +1490,6 @@ BEGIN_RCPP
 		        stat = ksVal_t[j].second;
 		        ksVal_t.erase(ksVal_t.begin()+j);
 		        //Calculate test statistic for pruning
-		        int b = A(k,s);
 		        stat_prune.push_back(statvec[s]);
 			      if(u>0) //Optimal partition cost if previous change points exists
 			        stat += FF(1-flag,s);
@@ -1594,7 +1592,7 @@ BEGIN_RCPP
 	//of change points.
 	std::vector<std::vector<int> > cpLocs = find_locations(A);
 	for (int i=0; i<K; ++i){
-		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), bind2nd(std::plus<int>(), 2));
+		transform(cpLocs[i].begin(), cpLocs[i].end(), cpLocs[i].begin(), std::bind(std::plus<int>(), placeholders::_1, 2));
 	}
 	std::vector<int> cps = cpLocs[k+1];
 	

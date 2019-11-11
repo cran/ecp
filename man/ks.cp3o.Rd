@@ -50,8 +50,7 @@ pruning. For long time series, consider using ks.cp3o_delta.
 }
 \references{
 %% ~put references to the literature/web site here ~
-
-Kifer D., Ben-David S., Gehrke J. (2004). Detecting change in data streams. International Conference on Very Large Data Bases.
+W. Zhang, N. A. James and D. S. Matteson, "Pruning and Nonparametric Multiple Change Point Detection," 2017 IEEE International Conference on Data Mining Workshops (ICDMW), New Orleans, LA, 2017, pp. 288-295.
 }
 \author{
 Wenyu Zhang
@@ -59,9 +58,11 @@ Wenyu Zhang
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-%%\seealso{
+\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
+%% ~related works ~
+Kifer D., Ben-David S., Gehrke J. (2004). Detecting change in data streams. International Conference on Very Large Data Bases.
+}
 \examples{
 set.seed(400)
 x = matrix(c(rnorm(100),rnorm(100,3),rnorm(100,0,2)))

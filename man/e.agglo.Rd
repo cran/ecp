@@ -48,10 +48,6 @@ Matteson D.S., James N.A. (2013). A Nonparametric Approach for Multiple Change P
 Nicholas A. James, David S. Matteson (2014). "ecp: An R Package for Nonparametric 
 Multiple Change Point Analysis of Multivariate Data.", "Journal of Statistical Software, 
 62(7), 1-25", URL "http://www.jstatsoft.org/v62/i07/"
-
-Rizzo M.L., Szekely G.L. (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
-
-Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
 }
 \author{
 Nicholas A. James
@@ -60,8 +56,13 @@ Nicholas A. James
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{e.divisive}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{e.divisive}}
+
+%% ~related works ~
+Rizzo M.L., Szekely G.L. (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification. pp. 151 - 183.
+
+Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics. pp. 1034 - 1055.
 }
 \examples{
 set.seed(100)

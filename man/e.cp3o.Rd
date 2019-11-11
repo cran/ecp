@@ -54,21 +54,21 @@ pruning. For long time series, consider using e.cp3o_delta.
 }
 \references{
 %% ~put references to the literature/web site here ~
-
-
-Rizzo M.L., Szekely G.L (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification.
-
-Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics.
+W. Zhang, N. A. James and D. S. Matteson, "Pruning and Nonparametric Multiple Change Point Detection," 2017 IEEE International Conference on Data Mining Workshops (ICDMW), New Orleans, LA, 2017, pp. 288-295.
 }
 \author{
-Nicholas A. James
+Nicholas A. James, Wenyu Zhang
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-%%\seealso{
+\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
+%% ~related works ~
+Rizzo M.L., Szekely G.L (2005). Hierarchical clustering via joint between-within distances: Extending ward's minimum variance method. Journal of Classification.
+
+Rizzo M.L., Szekely G.L. (2010). Disco analysis: A nonparametric extension of analysis of variance. The Annals of Applied Statistics.
+}
 \examples{
 set.seed(400)
 x1 = matrix(c(rnorm(50),rnorm(50,3)))

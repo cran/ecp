@@ -89,7 +89,7 @@ int e = as<int>(e_), s = as<int>(s_), min_size = as<int>(min_size_);//ending ind
 NumericMatrix D(D_);//the distance matrix
 e = e-s+1;//now represents the number of data points
 
-int t1=min_size, t2=min_size<<1;//tau1 and tau2
+double t1=min_size, t2=min_size<<1;//tau1 and tau2
 NumericMatrix cut1 = D(Range(0,t1-1),Range(0,t1-1));
 NumericMatrix cut2 = D(Range(t1,t2-1),Range(t1,t2-1));
 NumericMatrix cut3 = D(Range(0,t1-1),Range(t1,t2-1));

@@ -2,8 +2,8 @@ Package: ecp
 Type: Package
 Title: Non-Parametric Multiple Change-Point Analysis of Multivariate
         Data
-Version: 3.1.1
-Date: 2019-03-17
+Version: 3.1.2
+Date: 2019-11-10
 Author: Nicholas A. James, Wenyu Zhang and David S. Matteson
 Maintainer: Wenyu Zhang <wz258@cornell.edu>
 Description: Implements various procedures for finding 
@@ -20,5 +20,5 @@ LinkingTo: Rcpp
 NeedsCompilation: yes
 Repository: CRAN
 VignetteBuilder: R.rsp
-Packaged: 2019-03-18 03:18:25 UTC; wenyu
-Date/Publication: 2019-03-18 05:30:07 UTC
+Packaged: 2019-11-10 23:01:53 UTC; wenyuzhang
+Date/Publication: 2019-11-11 06:20:14 UTC
