@@ -1,5 +1,5 @@
 import(Rcpp)
-useDynLib(ecp, .registration=True)
+useDynLib(ecp, .registration=TRUE)
 
 importFrom("stats", "dist", "cov", "median")
 importFrom("utils", "tail")

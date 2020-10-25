@@ -36,7 +36,7 @@ Segments are found through the use of dynamic programming and the kernel trick.
 }
 \references{
 %% ~put references to the literature/web site here ~
-Harchaoui Z., Moulines E., Francis R.B (2009). Kernel Change-point Analysis. Advances in Neural Information Processing Systems.
+Arlot S., Celisse A., Harchaoui Z. (2019). A Kernel Multiple Change-point Algorithm via Model Selection. J. Mach. Learn. Res., 20, 162:1-162:56.
 }
 \author{
 Nicholas A. James
