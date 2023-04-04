@@ -442,7 +442,8 @@ BEGIN_RCPP
 	double alpha = as<double>(alpha_);
 	bool verbose = as<bool>(verbose_);
 	NumericMatrix Z(Z_);
-	
+	double lr = 0, ll = 0, rr = 0;
+
 	int N = Z.nrow(); //Get number of observations
 	int d = Z.ncol(); //Get number of dimensions
 
@@ -484,7 +485,6 @@ BEGIN_RCPP
 	    //Iterate over possible change point locations for a given "ending position"
 	    int s = *si;//change point location under consideration
 	    int u = -1;//Only allowed to have 1 change point in this case (K=1)
-	    double lr, ll, rr;
 	    if(s==minsize-1){
 	      NumericMatrix Z_us(s-u, d);
 	      for (int i=u+1; i<=s; ++i)
@@ -531,7 +531,6 @@ BEGIN_RCPP
 	      //Iterate over possible change point locations for a given "ending position"
 	      int s = *si;//change point location under consideration
 	      int u = -1;//Only allowed to have 1 change point in this case (K=1)
-	      double lr, ll, rr;
 	      if(s==minsize-1){
 	        NumericMatrix Z_us(s-u, d);
 	        for (int i=u+1; i<=s; ++i)

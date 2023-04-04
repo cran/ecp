@@ -1,6 +1,6 @@
-de38d7b41726ef957526bde71974325b *DESCRIPTION
+54116012f3d1d2e306cf942c4951fe39 *DESCRIPTION
 3e9b0ca5b8659405f3ad5b63008b4286 *NAMESPACE
-3211ba33bb3014fa9529ba0dcf5ae35a *NEWS
+c603b802c0c7850fac8758973b0914c1 *NEWS
 2d51652cb1e539e3ce415d6f58359320 *R/cp3o.R
 cff5f50b71bb776a981b359854206fa7 *R/e_agglomerative.R
 29b992ab27cd48c6a29a276fb700e37f *R/e_divisive.R
@@ -9,7 +9,7 @@ e0ab6d2eb4efe5bc90033696544882a2 *R/kernelCPA.R
 8ed1f4fd94c8d8741db4ce8176f8bba3 *build/vignette.rds
 cf3029b40aafa3a4ee49213091636c32 *data/ACGH.RData
 b784fececf53fc2904f271aa125a592c *data/DJIA.RData
-b38f4a08e71bfe3897b8ccf57f54d8c9 *inst/CITATION
+5753064b856ec47dd413c3023be8e208 *inst/CITATION
 a88d9bb869150a38eed581ef5f7a413c *inst/doc/ecp.pdf
 aa8f91448a2024f0f86e17b630700a48 *inst/doc/ecp.pdf.asis
 7f170914f73b63482fbc481202262b1c *man/ACGH.RData.Rd
@@ -33,9 +33,9 @@ e2175b2a24f1d93a4357428fca270ed6 *man/sig.test.Rd
 0ee574d9538fe9e4e993ebba3379f762 *man/splitPoint.Rd
 a9ef3ba8eda07802ba959db351df82c7 *man/splitPointC.Rd
 290490a4fa6b7a4ec3f295857e26fea1 *man/updateDistance.Rd
-96b01d009ac63b59c7463328109d1591 *src/Makevars
-dae9f8910a06e32fe4d36a9d6996d222 *src/Makevars.win
-6ca5a35ca2d41e006b1f3fdcb17b35e5 *src/efast.cpp
+b3f86c20b81b51f5162874977d38784d *src/Makevars
+c8e35a7d7a206bf196cf4f391739684f *src/Makevars.win
+410f61c4325652e2ff724575e3904597 *src/efast.cpp
 59cff1a8b20597e2eb984d699c937feb *src/energyChangePoint.cpp
 eb1009c414debd2974362addfb3ff5ac *src/kernelcpa.cpp
 7c22b1b500cab25872924e218f1645f5 *src/registerDynamicSymbol.c

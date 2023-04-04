@@ -1,8 +1,9 @@
 citHeader("The following references are for usage of the ecp package. You should cite the reference for each individual method used, as listed in the reference section of the help page for each function.")
 
-citEntry(entry = "article",
+bibentry(bibtype = "Article",
+  key          = "ecp-article", 
   title        = "{ecp}: An {R} Package for Nonparametric Multiple Change Point Analysis of Multivariate Data",
-  author       = personList(as.person("Nicholas A. James"), as.person("David S. Matteson")),
+  author       = c(person("Nicholas A. James"), person("David S. Matteson")),
   journal      = "Journal of Statistical Software",
   year         = "2014",
   volume       = "62",
@@ -17,16 +18,17 @@ citEntry(entry = "article",
         "URL https://www.jstatsoft.org/v62/i07/.")
 )
 
-citEntry(entry = "misc",
-  title        = "_{ecp}: An {R} Package for Nonparametric Multiple Change Point Analysis of Multivariate Data_. R package version 3.1.2",
-  author       = personList(as.person("Nicholas A. James"), as.person("Wenyu Zhang"), as.person("David S. Matteson")),
+bibentry(bibtype = "Misc",
+  key          = "ecp-package", 
+  title        = "{ecp}: An {R} Package for Nonparametric Multiple Change Point Analysis of Multivariate Data_. R package version 3.1.4",
+  author       = c(person("Nicholas A. James"), person("Wenyu Zhang"), person("David S. Matteson")),
   year         = "2019",
   url          = "https://cran.r-project.org/package=ecp",
 
   textVersion  =
   paste("Nicholas A. James, Wenyu Zhang, David S. Matteson (2019).",
         "_ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data_.",
-        "R package version 3.1.2.",
+        "R package version 3.1.4.",
         "URL https://cran.r-project.org/package=ecp")
 )
 
