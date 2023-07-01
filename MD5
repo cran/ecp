@@ -1,6 +1,6 @@
-54116012f3d1d2e306cf942c4951fe39 *DESCRIPTION
+17263f49d85cbb4722e8c635a6625627 *DESCRIPTION
 3e9b0ca5b8659405f3ad5b63008b4286 *NAMESPACE
-c603b802c0c7850fac8758973b0914c1 *NEWS
+ecf1b238408928aaf132eb5e75caeb75 *NEWS
 2d51652cb1e539e3ce415d6f58359320 *R/cp3o.R
 cff5f50b71bb776a981b359854206fa7 *R/e_agglomerative.R
 29b992ab27cd48c6a29a276fb700e37f *R/e_divisive.R
@@ -19,7 +19,7 @@ e27036e0d20bb458af64a7bccbb0afe9 *man/DJIA.RData.Rd
 cee46f7fddc963f77b451f7ba0888149 *man/e.cp3o_delta.Rd
 b4f1e55f54698fdb5fd2f13a17dd9d00 *man/e.divisive.Rd
 c0be7862c7cdf7ae28e8627cb6da2fd3 *man/e.split.Rd
-9503fa1eec76f00299d656780b789569 *man/ecp-internal.Rd
+2be83fb32ff42af2812f765e559f5ba4 *man/ecp-internal.Rd
 c9f17db761ab5a605dc2cf6cc5ccca01 *man/find.closest.Rd
 1a94a7bc1c087af8be755dd047fa02f9 *man/getBetween.Rd
 5529c330445347cb9045f0637a5c13e3 *man/getWithin.Rd

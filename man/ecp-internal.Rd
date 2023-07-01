@@ -1,6 +1,6 @@
-
 \name{ecp-internal}
-\title{Internal Energy Chage Point Functions}
+\alias{ecp-internal}
+\title{Internal Energy Change Point Functions}
 \description{
  Internal Energy Change Point functions.
 }
