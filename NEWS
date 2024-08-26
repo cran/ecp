@@ -1,3 +1,9 @@
+ecp 3.1.6
+============
+Changes made since previous version
+
+* Removed examples with memory warnings.
+
 ecp 3.1.5
 ============
 Changes made since previous version

@@ -2,9 +2,18 @@ Package: ecp
 Type: Package
 Title: Non-Parametric Multiple Change-Point Analysis of Multivariate
         Data
-Version: 3.1.5
-Date: 2023-7-1
-Author: Nicholas A. James, Wenyu Zhang and David S. Matteson
+Version: 3.1.6
+Date: 2024-8-25
+Authors@R: c(person(given = c("Nicholas", "A."),
+                    family = "James",
+                    role = "aut"),
+             person(given = "Wenyu",
+                    family = "Zhang",
+                    role = c("aut", "cre"),
+                    email = "wz258@cornell.edu"),
+             person(given = c("David", "S."),
+                    family = "Matteson",
+                    role = "aut"))
 Maintainer: Wenyu Zhang <wz258@cornell.edu>
 Description: Implements various procedures for finding 
 	     multiple change-points from Matteson D. et al (2013)
@@ -23,5 +32,8 @@ LinkingTo: Rcpp
 NeedsCompilation: yes
 Repository: CRAN
 VignetteBuilder: R.rsp
-Packaged: 2023-07-01 10:58:00 UTC; wenyuzhang
-Date/Publication: 2023-07-01 12:10:07 UTC
+Packaged: 2024-08-25 17:13:46 UTC; wenyuzhang
+Author: Nicholas A. James [aut],
+  Wenyu Zhang [aut, cre],
+  David S. Matteson [aut]
+Date/Publication: 2024-08-26 05:50:02 UTC
